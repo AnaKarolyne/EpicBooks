@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{_template::head('cadastrar')}"></head>
+
+
+<body class="grey lighten-3">
+
+    <nav th:replace="~{_template::#navbar}"></nav>
+
+    <div class="container">
+
+        <h2>Cadastrar Livro</h2>
+
+        <div class="card">
+            <div class="card-content">
+
+            <form class="col s12" th:action="${'/task'}" method="post" th:object="${task}">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input 
+                            th:field="*{title}" 
+                            type="text" 
+                            th:classappend="${#fields.hasErrors('title')} ? invalid" 
+                        >
+                        <label for="title">Título</label>
+                        <span class="helper-text red-text" th:errors="*{title}"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea 
+                            class="materialize-textarea" 
+                            th:field="*{description}" 
+                            th:classappend="${#fields.hasErrors('description')} ? invalid" 
+                        ></textarea>
+                        <label for="description">Descrição</label>
+                        <span class="helper-text red-text" th:errors="*{description}"></span>
+                    </div>
+                </div>
+                <label for="score">Pontuação</label>
+                <p class="range-field">
+                    <input th:field="*{score}" type="range" min="1" max="100" />
+                    <span class="helper-text red-text" th:errors="*{score}"></span>
+                </p>
+                
+            </div>
+            <div class="card-action right-align">
+                <a href="/books" class="btn grey">cancelar</a>
+                <button class="btn">cadastrar</button>
+            </div>
+
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
