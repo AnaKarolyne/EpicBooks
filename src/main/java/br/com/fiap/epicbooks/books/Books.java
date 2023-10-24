@@ -1,9 +1,11 @@
 package br.com.fiap.epicbooks.books;
 
+import br.com.fiap.epicbooks.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -29,4 +31,8 @@ public class Books {
     @Min(0) @Max(100)
     Integer status;
 
+    @ManyToOne
+    User user;
+
 }
+
